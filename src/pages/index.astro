@@ -182,19 +182,36 @@ const navigation = [
       const root = document.documentElement;
       const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
       const system = window.matchMedia('(prefers-color-scheme: dark)');
+      const themeKey = 'portfolio-theme';
       const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : system.matches;
       const update = () => toggle?.setAttribute('aria-pressed', String(isDark()));
+      const syncStoredTheme = (event?: StorageEvent) => {
+        try {
+          const storage = window.localStorage;
+          if (event && event.storageArea !== storage) return;
+          const theme = storage.getItem(themeKey);
+          if (theme === 'dark' || theme === 'light') root.dataset.theme = theme;
+          else delete root.dataset.theme;
+        } catch {}
+        update();
+      };
 
       if (toggle) {
-        update();
+        syncStoredTheme();
         toggle.hidden = false;
         toggle.addEventListener('click', () => {
           const theme = isDark() ? 'light' : 'dark';
           root.dataset.theme = theme;
           try {
-            localStorage.setItem('portfolio-theme', theme);
+            localStorage.setItem(themeKey, theme);
           } catch {}
           update();
+        });
+        window.addEventListener('storage', (event) => {
+          if (event.key === themeKey || event.key === null) syncStoredTheme(event);
+        });
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted) syncStoredTheme();
         });
         system.addEventListener('change', update);
       }
