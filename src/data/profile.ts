@@ -16,7 +16,7 @@ type Profile = {
   skills: { title: string; items: string[] }[];
   projects: Project[];
   experience: { place: string; role: string; period: string; results: string[] }[];
-  contacts: Link[];
+  github: string;
   source: string;
 };
 
@@ -28,7 +28,7 @@ export const profile: Profile = {
   avatar: { file: 'avatar.webp', alt: 'Аватар Микиты на GitHub' },
   about: [
     'Мне интересно превращать идеи в понятные веб-интерфейсы: от первого наброска до страницы, которую можно открыть на любом устройстве.',
-    'В работе ценю доступность, быстрые загрузки и компоненты, которые легко поддерживать. Это первая версия портфолио: проекты, опыт и часть контактов пока приведены для примера.',
+    'В работе ценю доступность, быстрые загрузки и компоненты, которые легко поддерживать. Это первая версия портфолио: проекты и опыт пока приведены для примера.',
   ],
   skills: [
     { title: 'Языки', items: ['HTML', 'CSS', 'JavaScript', 'TypeScript'] },
@@ -72,12 +72,7 @@ export const profile: Profile = {
       results: ['Сверстал первые сайты по макетам и опубликовал статическую сборку.'],
     },
   ],
-  contacts: [
-    { label: 'E-mail' },
-    { label: 'GitHub', href: 'https://github.com/mykytassss' },
-    { label: 'Telegram' },
-    { label: 'LinkedIn' },
-  ],
+  github: 'https://github.com/mykytassss',
   source: 'https://github.com/mykytassss/portfolio',
 };
 
@@ -85,22 +80,20 @@ export const copy = {
   lang: 'ru',
   metaTitle: 'Микита — фронтенд-разработчик',
   siteName: 'Портфолио Микиты',
-  metaDescription: 'Портфолио Микиты: веб-интерфейсы, навыки, проекты, опыт и контакты.',
+  metaDescription: 'Портфолио Микиты: веб-интерфейсы, навыки, проекты и опыт.',
   skip: 'Перейти к содержанию',
   home: 'На главную',
   nav: 'Основная навигация',
   theme: 'Тёмная тема',
   heroLabel: 'Портфолио / 01',
   greeting: 'Привет, я',
-  contactAction: 'Связаться',
   about: 'Обо мне',
   skills: 'Навыки',
   projects: 'Проекты',
   exampleProjects: 'Примеры проектов · ссылки появятся после обновления портфолио.',
   experience: 'Опыт',
   exampleExperience: 'Пример оформления опыта.',
-  contacts: 'Контакты',
-  contactIntro: 'Пока со мной можно связаться через GitHub. Остальные контакты появятся позже.',
+  github: 'Профиль GitHub',
   source: 'Исходный код',
   soon: 'скоро',
   newTab: '(откроется в новой вкладке)',

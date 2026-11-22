@@ -9,7 +9,6 @@ const year = new Date().getUTCFullYear();
 const navigation = [
   { id: 'about', label: copy.about },
   { id: 'projects', label: copy.projects },
-  { id: 'contacts', label: copy.contacts },
 ];
 ---
 
@@ -76,7 +75,6 @@ const navigation = [
           <p class="hero-intro">{profile.intro}</p>
           <div class="hero-actions">
             <a class="button primary" href="#projects">{copy.projects}<span aria-hidden="true">↓</span></a>
-            <a class="button" href="#contacts">{copy.contactAction}<span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -159,22 +157,15 @@ const navigation = [
           ))}
         </ol>
       </section>
-
-      <section id="contacts" class="section contacts" aria-labelledby="contacts-heading" tabindex="-1">
-        <h2 id="contacts-heading"><span class="section-index" aria-hidden="true">05 /</span>{copy.contacts}</h2>
-        <p class="section-note">{copy.contactIntro}</p>
-        <ul class="contact-list" role="list">
-          {profile.contacts.map(({ label, href }) => (
-            <li>{href ? <a class="button" href={href} target="_blank" rel="noopener noreferrer">{label}<span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a> : <span class="contact-placeholder">{label}<span class="soon">{copy.soon}</span></span>}</li>
-          ))}
-        </ul>
-      </section>
     </main>
 
     <footer class="site-footer">
       <div class="shell footer-inner">
         <span>© {year} {profile.name}</span>
-        <a href={profile.source} target="_blank" rel="noopener noreferrer">{copy.source} <span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a>
+        <div class="footer-links">
+          <a href={profile.github} target="_blank" rel="noopener noreferrer">{copy.github} <span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a>
+          <a href={profile.source} target="_blank" rel="noopener noreferrer">{copy.source} <span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a>
+        </div>
       </div>
     </footer>
 
