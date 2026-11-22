@@ -75,8 +75,8 @@ const navigation = [
           <p class="hero-role">{profile.role}</p>
           <p class="hero-intro">{profile.intro}</p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">{copy.projects}<span aria-hidden="true">↘</span></a>
-            <a class="button" href="#contacts">{copy.contactAction}<span aria-hidden="true">↗</span></a>
+            <a class="button primary" href="#projects">{copy.projects}<span aria-hidden="true">↓</span></a>
+            <a class="button" href="#contacts">{copy.contactAction}<span aria-hidden="true">↓</span></a>
           </div>
         </div>
         <div class="hero-art" aria-hidden="true">
@@ -135,7 +135,9 @@ const navigation = [
                 <p>{description}</p>
                 <ul class="tags" role="list">{stack.map((item) => <li>{item}</li>)}</ul>
                 <ul class="project-links" role="list">
-                  {links.map(({ label, href }) => <li>{href ? <a href={href}>{label} <span aria-hidden="true">↗</span></a> : label}</li>)}
+                  {links.map(({ label, href }) => (
+                    <li>{href ? <a href={href} target="_blank" rel="noopener noreferrer">{label} <span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a> : <span class="link-pending">{label}<span class="soon">{copy.soon}</span></span>}</li>
+                  ))}
                 </ul>
               </div>
             </article>
@@ -163,7 +165,7 @@ const navigation = [
         <p class="section-note">{copy.contactIntro}</p>
         <ul class="contact-list" role="list">
           {profile.contacts.map(({ label, href }) => (
-            <li>{href ? <a class="button" href={href}>{label}<span aria-hidden="true">↗</span></a> : <span class="contact-placeholder">{label}</span>}</li>
+            <li>{href ? <a class="button" href={href} target="_blank" rel="noopener noreferrer">{label}<span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a> : <span class="contact-placeholder">{label}<span class="soon">{copy.soon}</span></span>}</li>
           ))}
         </ul>
       </section>
@@ -172,7 +174,7 @@ const navigation = [
     <footer class="site-footer">
       <div class="shell footer-inner">
         <span>© {year} {profile.name}</span>
-        <a href={profile.source}>{copy.source} <span aria-hidden="true">↗</span></a>
+        <a href={profile.source} target="_blank" rel="noopener noreferrer">{copy.source} <span aria-hidden="true">↗</span><span class="visually-hidden">{copy.newTab}</span></a>
       </div>
     </footer>
 
@@ -195,6 +197,13 @@ const navigation = [
           update();
         });
         system.addEventListener('change', update);
+      }
+
+      const header = document.querySelector('.site-header');
+      if (header) {
+        new ResizeObserver(() => {
+          root.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`);
+        }).observe(header);
       }
     </script>
   </body>
