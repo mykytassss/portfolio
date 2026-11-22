@@ -222,6 +222,12 @@ button { font: inherit; }
 }
 
 .hero-art svg { display: block; width: min(100%, 32rem); }
+
+@media (width < 36rem) {
+  .hero { gap: 1.25rem; padding-block: 2rem; }
+  .hero-art svg { max-height: 8rem; }
+}
+
 .art-orbit { stroke: var(--art-line); }
 .art-frame { fill: var(--surface); stroke: var(--art-line); stroke-width: 1.5; }
 .art-frame rect:first-child { fill: var(--tint); }
