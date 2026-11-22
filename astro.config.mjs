@@ -4,4 +4,5 @@ export default defineConfig({
   site: 'https://mykytassss.github.io',
   base: '/portfolio',
   trailingSlash: 'always',
+  build: { inlineStylesheets: 'always' },
 });
