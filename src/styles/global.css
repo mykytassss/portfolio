@@ -287,7 +287,7 @@ button { font: inherit; }
 .footer-inner a { gap: 0.3rem; }
 
 @media (min-width: 36rem) {
-  html { scroll-padding-top: 5rem; }
+  html { scroll-padding-top: calc(var(--header-height, 5rem) + 1rem); }
   .shell { width: min(100% - 4rem, 69rem); }
   .site-header { position: sticky; z-index: 1; top: 0; }
   .header-inner { grid-template-columns: 1fr auto auto; gap: 1.5rem; }

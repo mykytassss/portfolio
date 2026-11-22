@@ -190,6 +190,13 @@ const navigation = [
         });
         system.addEventListener('change', update);
       }
+
+      const header = document.querySelector('.site-header');
+      if (header) {
+        new ResizeObserver(() => {
+          root.style.setProperty('--header-height', `${header.getBoundingClientRect().height}px`);
+        }).observe(header);
+      }
     </script>
   </body>
 </html>
