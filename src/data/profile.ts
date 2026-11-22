@@ -11,7 +11,7 @@ type Profile = {
   mark: string;
   role: string;
   intro: string;
-  avatar: { src: string; alt: string };
+  avatar: { file: string; alt: string };
   about: string[];
   skills: { title: string; items: string[] }[];
   projects: Project[];
@@ -25,7 +25,7 @@ export const profile: Profile = {
   mark: 'М',
   role: 'Фронтенд-разработчик',
   intro: 'Делаю интерфейсы, которыми удобно пользоваться. Люблю ясную типографику, продуманные детали и простой код.',
-  avatar: { src: 'https://github.com/mykytassss.png', alt: 'Аватар Микиты на GitHub' },
+  avatar: { file: 'avatar.webp', alt: 'Аватар Микиты на GitHub' },
   about: [
     'Мне интересно превращать идеи в понятные веб-интерфейсы: от первого наброска до страницы, которую можно открыть на любом устройстве.',
     'В работе ценю доступность, быстрые загрузки и компоненты, которые легко поддерживать. Это первая версия портфолио: проекты, опыт и часть контактов пока приведены для примера.',
@@ -84,6 +84,7 @@ export const profile: Profile = {
 export const copy = {
   lang: 'ru',
   metaTitle: 'Микита — фронтенд-разработчик',
+  siteName: 'Портфолио Микиты',
   metaDescription: 'Портфолио Микиты: веб-интерфейсы, навыки, проекты, опыт и контакты.',
   skip: 'Перейти к содержанию',
   home: 'На главную',

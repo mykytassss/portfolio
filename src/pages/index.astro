@@ -4,6 +4,7 @@ import '../styles/global.css';
 
 const base = import.meta.env.BASE_URL;
 const canonical = new URL(base, Astro.site);
+const ogImage = new URL(`${base}images/og.jpg`, Astro.site);
 const year = new Date().getUTCFullYear();
 const navigation = [
   { id: 'about', label: copy.about },
@@ -24,10 +25,17 @@ const navigation = [
     <meta property="og:title" content={copy.metaTitle} />
     <meta property="og:description" content={copy.metaDescription} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content={profile.avatar.src} />
-    <meta property="og:image:alt" content={profile.avatar.alt} />
+    <meta property="og:site_name" content={copy.siteName} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={copy.metaTitle} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={canonical.href} />
+    <link rel="icon" href={`${base}favicon.ico`} sizes="32x32" />
     <link rel="icon" href={`${base}images/mark.svg`} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={`${base}apple-touch-icon.png`} />
     <title>{copy.metaTitle}</title>
     <script is:inline>
       try {
@@ -96,7 +104,7 @@ const navigation = [
       <section id="about" class="section" aria-labelledby="about-heading">
         <h2 id="about-heading"><span class="section-index" aria-hidden="true">01 /</span>{copy.about}</h2>
         <div class="about-grid">
-          <img class="avatar" src={profile.avatar.src} alt={profile.avatar.alt} width="144" height="144" loading="lazy" decoding="async" />
+          <img class="avatar" src={`${base}images/${profile.avatar.file}`} alt={profile.avatar.alt} width="144" height="144" loading="lazy" decoding="async" />
           <div class="about-copy">
             {profile.about.map((paragraph) => <p>{paragraph}</p>)}
           </div>
